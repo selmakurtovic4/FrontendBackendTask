@@ -3,6 +3,7 @@
 import {
   Model, UUIDV4
 } from 'sequelize';
+import { Sequelize } from 'sequelize-typescript';
 
 interface UserAttributes {
   _id: string;
@@ -12,7 +13,7 @@ interface UserAttributes {
   phoneNumber: string;
 }
 
-module.exports = (sequelize: any, DataTypes: any) => {
+module.exports = (sequelize: Sequelize, DataTypes: { STRING: any; }) => {
   class User extends Model<UserAttributes> 
   implements UserAttributes {
     /**
@@ -25,9 +26,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     lastName!: string;
     email!: string;
     phoneNumber!: string;
-    static associate(models: any) {
   
-    }
   };
   User.init({
     _id: {
